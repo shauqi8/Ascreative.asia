@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout title="Contact Us">
+  <Hero
+    eyebrow="Let's Talk"
+    title="Contact Us"
+    subtitle="Ready to start your next project? Get in touch with our team today."
+  />
+
+  <div class="page-content">
+    <section class="section">
+      <div class="contact-grid">
+
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2 class="info-heading">Get in Touch</h2>
+
+          <div class="info-items">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div>
+                <div class="info-label">Headquarters</div>
+                <address class="info-text">
+                  Lot 14, Jalan Perusahaan Dua,<br />
+                  Batu Caves Industrial Area,<br />
+                  68100 Batu Caves, Selangor, Malaysia.
+                </address>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div>
+                <div class="info-label">Email</div>
+                <a href="mailto:Adam.ascsr@gmail.com" class="info-link">Adam.ascsr@gmail.com</a>
+                <a href="mailto:saiful.ascsr@gmail.com" class="info-link">saiful.ascsr@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div>
+                <div class="info-label">Phone</div>
+                <div class="phone-entries">
+                  <div>
+                    <span class="person">Adam Shah:</span>
+                    <a href="tel:+60173746240" class="info-link">+60 17-374 6240</a>
+                  </div>
+                  <div>
+                    <span class="person">Saiful Rizan:</span>
+                    <a href="tel:+60122197979" class="info-link">+60 12-219 7979</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">🌐</div>
+              <div>
+                <div class="info-label">Website</div>
+                <span class="info-text">www.ascreative.asia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-panel">
+          <h3 class="form-heading">Send a Message</h3>
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="Event Inquiry" />
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">
+              Send Message
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-content { padding-top: 2rem; }
+
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .info-heading {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .info-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .info-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+  .info-label {
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .info-text {
+    color: var(--color-text-dim);
+    font-style: normal;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .info-link {
+    display: block;
+    color: var(--color-text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+    margin-bottom: 0.2rem;
+  }
+
+  .info-link:hover { color: var(--color-accent-cyan); }
+
+  .phone-entries { display: flex; flex-direction: column; gap: 0.5rem; }
+  .person { color: var(--color-text); font-weight: 500; font-size: 0.875rem; margin-right: 0.4rem; }
+
+  /* Form */
+  .contact-form-panel {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+  }
+
+  .form-heading {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-group input, .form-group textarea {
+    background: var(--color-bg-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 0.625rem;
+    padding: 0.875rem 1rem;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    outline: none;
+    resize: none;
+  }
+
+  .form-group input::placeholder, .form-group textarea::placeholder { color: var(--color-text-dim); opacity: 0.6; }
+
+  .form-group input:focus, .form-group textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+
+  .submit-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 0.625rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  }
+
+  .submit-btn:hover {
+    background: #2563EB;
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+</style>

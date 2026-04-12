@@ -1,0 +1,313 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Clients from '../components/Clients.astro';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const projects = await getCollection('portfolio');
+const featuredServices = services.slice(0, 3);
+
+const serviceIcons: Record<string, string> = {
+  'creative-technology': '💡',
+  'event-production': '🎪',
+  'event-structures': '🏗️',
+  'event-decoration': '🎨',
+  'audio-visual-lighting': '🔊',
+  'environment': '🌿',
+};
+---
+
+<Layout title="Home">
+  <Hero
+    eyebrow="Welcome to"
+    title="AS Creative Solution & Resources"
+    subtitle="Where Creativity, Technology, Events, and Sustainability Come Together"
+    primaryCta={{ text: 'Discover Our Work', link: '/portfolio' }}
+    secondaryCta={{ text: 'Our Services', link: '/services' }}
+    badges={['Event Production', 'Creative & Tech', 'AV & Lighting', 'Environment']}
+  />
+
+  <!-- About Snippet -->
+  <section class="section">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Innovative Solutions for Over 20 Years</h2>
+        <p class="section-subtitle">
+          AS Creative Solution & Resources is a leading integrated solutions provider in creative technology,
+          event production, and environmental services. We combine cutting edge technology with creative expertise
+          to deliver immersive experiences that connect audiences and elevate brand impact.
+        </p>
+        <a href="/about" class="btn btn-secondary">
+          Read More About Us
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Projects Delivered</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">Service Pillars</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Trusted Clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section-dark">
+    <div class="section-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Our Core Services</h2>
+      <p class="section-subtitle">
+        Comprehensive end-to-end solutions integrating creativity, technology, and sustainability.
+      </p>
+    </div>
+    <div class="grid-3">
+      {featuredServices.map(service => (
+        <ServiceCard
+          title={service.data.title}
+          description={service.data.description}
+          icon={serviceIcons[service.id] ?? '⭐'}
+          link={`/services/${service.id}`}
+        />
+      ))}
+    </div>
+    <div class="section-cta">
+      <a href="/services" class="btn btn-secondary">View All Services</a>
+    </div>
+  </section>
+
+  <!-- Portfolio Preview -->
+  <section class="section">
+    <div class="section-header">
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Discover how we bring ideas to life with flawless execution.</p>
+    </div>
+    <div class="grid-3">
+      {projects.map(project => (
+        <ProjectCard
+          title={project.data.title}
+          client={project.data.client}
+          description={project.data.description}
+          image={project.data.image}
+        />
+      ))}
+    </div>
+    <div class="section-cta">
+      <a href="/portfolio" class="btn btn-secondary">View All Projects</a>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <Clients />
+
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="cta-content">
+      <h2 class="cta-title">Ready to start your next project?</h2>
+      <p class="cta-subtitle">Get in touch with our team today.</p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+    <div class="cta-glow"></div>
+  </section>
+</Layout>
+
+<style>
+  .section {
+    padding: 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-dark {
+    background: rgba(30, 41, 59, 0.4);
+    border-radius: 1.5rem;
+    max-width: 100%;
+    padding-left: clamp(1rem, 5%, 6rem);
+    padding-right: clamp(1rem, 5%, 6rem);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-dim);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .section-cta {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* About grid */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.2s ease;
+  }
+
+  .stat-card:hover { border-color: var(--color-primary); }
+
+  .stat-number {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-purple));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: var(--color-text-dim);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
+  }
+
+  .btn-primary:hover { background: #2563EB; transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    margin-top: 1rem;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(59, 130, 246, 0.1);
+    border-color: var(--color-primary);
+  }
+
+  /* Grid */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* CTA Banner */
+  .cta-banner {
+    position: relative;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    padding: 5rem 2rem;
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 1200px;
+    overflow: hidden;
+  }
+
+  .cta-content { position: relative; z-index: 2; }
+
+  .cta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .cta-subtitle {
+    color: var(--color-text-dim);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .cta-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2), transparent 70%);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>

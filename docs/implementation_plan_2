@@ -1,0 +1,55 @@
+# Rebuilding Design with `astro-darkness` Template
+
+This plan outlines the complete overhaul of your existing website to migrate from the current light Tailwind-based design to the `astro-darkness` template, which features a modern dark aesthetic, glassmorphism UI, and interactive Three.js particle backgrounds.
+
+## User Review Required
+
+Please review the process below. Since `astro-darkness` uses traditional CSS and Astro component-scoped styling instead of Tailwind CSS, we will be replacing our current components while maintaining the data architecture we've built for your Services and Portfolio.
+
+## 1. Goal
+
+Completely transform the user interface to emulate the [astro-darkness template](https://github.com/kpab/astro-darkness) without losing the AS Creative content, customized data collections, or the newly corrected clients list.
+
+## 2. Dependencies & Global Configuration
+
+#### [NEW] Dependencies
+- Install the `three` and `@types/three` packages via npm, which are required for the `ThreeBackground.astro` particle effects.
+
+#### [MODIFY] Global Styles
+- Overwrite `src/styles/global.css` with the developer dark theme CSS variables defined in the `astro-darkness` template. We will adapt the primary branding colors (Blue/Purple/Cyan) from the default template to fit AS Creative's brand if desired, but we will start with the default gorgeous Abyss Theme.
+
+## 3. Component Migration
+
+I have already downloaded the `astro-darkness` repository to our scratch directory. I will selectively copy the raw template files over:
+
+#### [MODIFY] Overwriting base structures:
+- Add `src/components/ThreeBackground.astro`
+- Overwrite `src/layouts/Layout.astro` (using `BaseLayout.astro` logic from the template).
+- Overwrite `src/components/Navigation.astro` (replacing the React navbar with the template's floating glassmorphism Astro navbar).
+- Overwrite `src/components/Hero.astro` to match the template's bold typography and effects.
+- Add `src/components/ProjectCard.astro` and `src/components/Card.astro` to use the template's standard card layouts.
+
+## 4. Retaining & Integrating Content
+
+We will preserve the data layer (`src/content/` and `src/content.config.ts`) and loop that data into the newly styled components.
+
+#### [MODIFY] `src/pages/index.astro`
+- Integrate `ThreeBackground`.
+- Remap our Service Collections to `Card.astro`.
+- Map our Portfolio items to the new `ProjectCard.astro`.
+
+#### [MODIFY] `src/components/Clients.astro`
+- Update the Clients section classes. Since the background will be dark (`#0F172A`), we need to change the client logo grids so they contrast perfectly with a dark background. (e.g., glassmorphism containers instead of solid white backgrounds).
+
+#### [MODIFY] `src/pages/about.astro`, `src/pages/contact.astro`, and `/services/[slug].astro`
+- Wrap all content in the dark theme layouts, apply glowing text or shimmer effects for headers, and utilize the template's `Space Grotesk` typography fonts where necessary.
+
+## Verification Plan
+
+### Automated / Manual Verification
+1. Run `npm install` to grab `three`.
+2. Execute `npm run dev` and visually inspect the server rendering.
+3. Validate that the particle background animation functions perfectly on the home page.
+4. Ensure all links point to the right data schemas and no 404s appear for dynamic content slugs.
+
+Once you approve this plan, I will immediately begin migrating the component and CSS files over and wire them into the AS Creative content!

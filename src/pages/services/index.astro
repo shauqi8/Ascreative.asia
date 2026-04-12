@@ -1,0 +1,131 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('services');
+const creativeTech = services.filter(s => s.data.category === 'Creative Tech');
+const eventProd = services.filter(s => s.data.category === 'Event Production');
+const environment = services.filter(s => s.data.category === 'Environment');
+
+const serviceIcons: Record<string, string> = {
+  'creative-technology': '💡',
+  'event-production': '🎪',
+  'event-structures': '🏗️',
+  'event-decoration': '🎨',
+  'audio-visual-lighting': '🔊',
+  'environment': '🌿',
+};
+---
+
+<Layout title="Our Services">
+  <Hero
+    eyebrow="Our Capabilities"
+    title="Services"
+    subtitle="Comprehensive end-to-end solutions integrating creativity, technology, events, and sustainability."
+  />
+
+  <div class="page-content">
+    <section class="section">
+      <div class="section-header">
+        <div class="section-label">Event Production</div>
+        <h2 class="section-title">Event & Experiential Services</h2>
+        <p class="section-subtitle">From structures and stages to AV and full event management.</p>
+      </div>
+      <div class="grid-3">
+        {eventProd.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            description={service.data.description}
+            icon={serviceIcons[service.id] ?? '🎯'}
+            link={`/services/${service.id}`}
+          />
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-label">Digital & Creative</div>
+        <h2 class="section-title">Creative & Technology</h2>
+        <p class="section-subtitle">Web, digital marketing, content, and resource management solutions.</p>
+      </div>
+      <div class="grid-3">
+        {creativeTech.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            description={service.data.description}
+            icon={serviceIcons[service.id] ?? '💡'}
+            link={`/services/${service.id}`}
+          />
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-label">Sustainability</div>
+        <h2 class="section-title">Environmental Services</h2>
+        <p class="section-subtitle">Responsible waste and facility management solutions.</p>
+      </div>
+      <div class="grid-3">
+        {environment.map(service => (
+          <ServiceCard
+            title={service.data.title}
+            description={service.data.description}
+            icon={serviceIcons[service.id] ?? '🌿'}
+            link={`/services/${service.id}`}
+          />
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .page-content { padding-top: 1rem; }
+
+  .section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-subtitle {
+    color: var(--color-text-dim);
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .grid-3 { grid-template-columns: 1fr; }
+  }
+</style>

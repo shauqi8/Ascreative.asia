@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO: Title Tag (Targeting Primary Keywords & Location based on PDF data) -->
+    <title>ASCREATIVE | Top Event Production, Creative Tech & Environmental Services Malaysia</title>
+    
+    <!-- SEO: Compelling Meta Description for CTR (Summarizing 20 years of experience) -->
+    <meta name="description" content="With over 20 years of experience, ASCREATIVE provides premier integrated solutions in Malaysia, specializing in event production, creative video technology, and environmental waste management.">
+    
+    <!-- SEO: Indexing & Crawl Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://www.ascreative.asia/">
+    
+    <!-- SEO: Open Graph for Social Sharing & Entity Recognition -->
+    <meta property="og:locale" content="en_MY">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ASCREATIVE | Integrated Business Solutions in Malaysia">
+    <meta property="og:description" content="Transform your business with our cutting-edge creative tech, seamless event production, and eco-friendly waste management solutions.">
+    <meta property="og:url" content="https://www.ascreative.asia/">
+    <meta property="og:site_name" content="ASCREATIVE">
+    
+    <!-- Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <!-- SEO: JSON-LD Structured Data (LocalBusiness/Organization mapping exact PDF services) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "AS Creative Solution & Resources",
+      "alternateName": "ASCREATIVE",
+      "url": "https://www.ascreative.asia",
+      "logo": "https://www.ascreative.asia/logo.png",
+      "description": "A leading integrated solutions provider in creative technology, event production, and environmental services with over 20 years of experience.",
+      "telephone": "+60173746240",
+      "email": "Adam.ascsr@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Lot 14, Jalan Perusahaan Dua, Batu Caves Industrial Area",
+        "addressLocality": "Batu Caves",
+        "addressRegion": "Selangor",
+        "postalCode": "68100",
+        "addressCountry": "MY"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "3.2381",
+        "longitude": "101.6811"
+      },
+      "sameAs": [
+        "https://www.facebook.com/ascreative",
+        "https://www.linkedin.com/company/ascreative"
+      ],
+      "areaServed": "Malaysia",
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Event Production & Management"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Event Structures, Deco, Audio & Lighting"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Video Production & Creative Technology"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Environmental Services & Waste Management"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            /* Colors - Dark corporate tech with environmental emerald */
+            --bg-base: #0a0a0f;
+            --bg-surface: rgba(26, 26, 36, 0.4);
+            --bg-surface-hover: rgba(40, 40, 55, 0.5);
+            
+            --primary: #3b82f6; /* Trustworthy Corporate Blue */
+            --primary-light: #60a5fa;
+            --primary-dark: #2563eb;
+            --secondary: #10b981; /* Environmental Emerald */
+            
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --border: rgba(255, 255, 255, 0.1);
+            
+            /* Typography */
+            --font-heading: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing & Effects */
+            --section-pad: 6rem;
+            --glass-blur: blur(12px);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.2);
+            --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+            
+            /* Transitions */
+            --trans-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --trans-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animated Blobs for Visual UX */
+        .blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(100px); z-index: -1; opacity: 0.3;
+            animation: drift 20s infinite alternate cubic-bezier(0.5, 0, 0.5, 1);
+        }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: var(--primary-dark); }
+        .blob-2 { top: 40%; right: -20%; width: 40vw; height: 40vw; background: var(--secondary); animation-delay: -5s; }
+        .blob-3 { bottom: -10%; left: 20%; width: 60vw; height: 60vw; background: #8b5cf6; animation-delay: -10s; }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(10%, 10%) scale(1.1); }
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        a { text-decoration: none; color: inherit; transition: color var(--trans-fast); }
+        ul { list-style: none; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            z-index: 100; padding: 1.5rem 0; transition: all var(--trans-fast);
+        }
+        .navbar.scrolled {
+            padding: 1rem 0; background: var(--bg-surface);
+            backdrop-filter: var(--glass-blur); border-bottom: 1px solid var(--border);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; color: var(--text-main); letter-spacing: 1px; }
+        .logo-icon { color: var(--primary); }
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { font-weight: 500; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--primary-light); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: var(--text-main); cursor: pointer; }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 0.875rem 2rem; border-radius: 99px;
+            font-weight: 600; font-family: var(--font-heading);
+            transition: all var(--trans-fast); cursor: pointer; border: none;
+            text-decoration: none;
+        }
+        .btn-primary { background: var(--primary); color: white; box-shadow: var(--shadow-glow); }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); }
+        .btn-secondary { background: var(--bg-surface); color: var(--text-main); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--bg-surface-hover); transform: translateY(-2px); }
+        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+
+        /* Typography & Headers */
+        h1, h2, h3, h4 { font-family: var(--font-heading); line-height: 1.2; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .section-header p { color: var(--text-muted); font-size: 1.125rem; max-width: 750px; margin: 0 auto; }
+
+        /* Sections Layout */
+        section { padding: var(--section-pad) 0; }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 8rem; }
+        .hero-content { text-align: center; max-width: 900px; margin: 0 auto; }
+        .hero-title { font-size: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: 1.5rem; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+        .hero-actions { display: flex; gap: 1rem; justify-content: center; }
+
+        /* About Us Section (New based on PDF) */
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-text p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .stat-item h4 { font-size: 2.5rem; color: var(--primary-light); margin-bottom: 0.5rem; }
+        .stat-item p { color: var(--text-main); font-weight: 500; }
+
+        /* Services Grid */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .service-card {
+            background: var(--bg-surface); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border); border-radius: 24px;
+            padding: 2.5rem; transition: all var(--trans-fast);
+            display: flex; flex-direction: column;
+        }
+        .service-card:hover { transform: translateY(-5px); background: var(--bg-surface-hover); border-color: var(--primary); }
+        .service-icon { color: var(--primary); width: 48px; height: 48px; margin-bottom: 1.5rem; }
+        .service-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .service-card p { color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+        .service-features { list-style: none; margin-top: auto; }
+        .service-features li { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .service-features i { color: var(--secondary); width: 16px; height: 16px; }
+
+        /* Insights Grid (For Backlink & SEO Authority) */
+        .insights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .insight-card {
+            background: var(--bg-surface); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border); border-radius: 24px; padding: 2.5rem; 
+            display: flex; flex-direction: column; transition: all var(--trans-fast);
+        }
+        .insight-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .insight-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .insight-card p { color: var(--text-muted); margin-bottom: 1.5rem; flex-grow: 1; }
+        .insight-card .read-more { color: var(--primary); font-weight: 600; display: inline-flex; align-items: center; gap: 0.5rem; }
+        .insight-tag { display: inline-block; padding: 0.25rem 0.75rem; background: rgba(59, 130, 246, 0.2); color: var(--primary-light); border-radius: 99px; font-size: 0.875rem; margin-bottom: 1rem; align-self: flex-start; }
+
+        /* Clients Grid */
+        .clients-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; }
+        .client-item {
+            background: var(--bg-surface); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border); border-radius: 12px;
+            padding: 2rem; text-align: center; font-weight: 600; font-family: var(--font-heading);
+            color: var(--text-muted); transition: all var(--trans-fast);
+            display: flex; align-items: center; justify-content: center; min-height: 100px;
+        }
+        .client-item:hover { color: var(--text-main); border-color: var(--primary); background: var(--bg-surface-hover); transform: translateY(-3px);}
+
+        /* Contact Forms & Info */
+        .contact-card {
+            background: var(--bg-surface); backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border); border-radius: 24px;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 4rem;
+        }
+        .info-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+        .info-item { display: flex; gap: 1rem; align-items: flex-start; }
+        .info-item i { color: var(--primary); margin-top: 0.25rem; flex-shrink: 0; }
+        .info-item span { color: var(--text-muted); }
+        .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 1rem 1.5rem; border-radius: 12px;
+            background: rgba(0,0,0,0.2); border: 1px solid var(--border);
+            color: var(--text-main); font-family: var(--font-body);
+            transition: all var(--trans-fast);
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); background: rgba(0,0,0,0.4); }
+
+        /* Footer */
+        footer { border-top: 1px solid var(--border); padding-top: 4rem; background: var(--bg-base); }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+        .footer-brand p { color: var(--text-muted); margin-top: 1rem; max-width: 350px; }
+        .footer-links { display: contents; }
+        .link-group h4 { margin-bottom: 1.5rem; font-size: 1.125rem; }
+        .link-group a { display: block; color: var(--text-muted); margin-bottom: 0.75rem; }
+        .link-group a:hover { color: var(--primary-light); }
+        .footer-bottom { border-top: 1px solid var(--border); padding: 2rem 0; text-align: center; color: var(--text-muted); font-size: 0.875rem; }
+
+        /* Scroll Animations */
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity var(--trans-slow), transform var(--trans-slow); }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* Responsive Media Queries */
+        @media (max-width: 992px) {
+            .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .contact-card { grid-template-columns: 1fr; padding: 2.5rem; }
+            .footer-container { grid-template-columns: 1fr; }
+            .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; width: 100%;
+                background: var(--bg-surface); backdrop-filter: var(--glass-blur);
+                flex-direction: column; padding: 2rem; border-bottom: 1px solid var(--border);
+            }
+            .nav-links.active { display: flex; }
+            .mobile-menu-btn { display: block; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-actions { flex-direction: column; width: 100%; }
+            .hero-actions .btn { width: 100%; }
+            .section-header h2 { font-size: 2rem; }
+            .about-stats { grid-template-columns: 1fr; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative background elements -->
+    <div class="blob blob-1" aria-hidden="true"></div>
+    <div class="blob blob-2" aria-hidden="true"></div>
+    <div class="blob blob-3" aria-hidden="true"></div>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo" aria-label="ASCREATIVE Home">
+                <i data-lucide="layers" class="logo-icon" aria-hidden="true"></i>
+                <span>ASCREATIVE</span>
+            </a>
+            <nav class="nav-links" aria-label="Main Navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#services">Services Catalogue</a>
+                <a href="#insights">Insights</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i data-lucide="menu" aria-hidden="true"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- SEO: Hero section with clear H1 outlining core B2B business proposition -->
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content fade-in-up">
+                    <h1 class="hero-title">Elevating Brands through Creative Tech & Seamless Event Production</h1>
+                    <p class="hero-subtitle">AS Creative Solution & Resources is a leading integrated provider delivering immersive event experiences, innovative creative technology, and sustainable environmental services across Malaysia.</p>
+                    <div class="hero-actions">
+                        <a href="#services" class="btn btn-primary" aria-label="Explore our product catalogue">Explore Catalogue</a>
+                        <a href="#contact" class="btn btn-secondary" aria-label="Contact ASCREATIVE">Partner With Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO: Semantic Article for "About Us" utilizing text directly from the PDF -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image fade-in-up">
+                        <!-- Abstract placeholder representing synergy of tech and environment -->
+                        <div style="width: 100%; height: 400px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(16, 185, 129, 0.2)); border-radius: 24px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                            <i data-lucide="shield-check" style="width: 64px; height: 64px; color: var(--primary-light); margin-bottom: 1rem;"></i>
+                            <h3 style="font-family: var(--font-heading);">Excellence & Reliability</h3>
+                        </div>
+                    </div>
+                    <article class="about-text fade-in-up delay-1">
+                        <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-family: var(--font-heading);">About Us</h2>
+                        <p>With more than <strong>20 years of experience</strong>, we have built a reputation for excellence, innovation, and reliability across diverse industries and large-scale projects.</p>
+                        <p>We combine cutting-edge technology with creative expertise to deliver immersive experiences that connect audiences and elevate brand impact. From concept design to seamless execution, our seasoned professionals manage every detail—planning, production, logistics, and on-site delivery.</p>
+                        <p>Our commitment to <strong>environmental stewardship</strong> drives us to implement sustainable practices across all aspects of our work, providing tailored solutions that align with global standards.</p>
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <h4>20+</h4>
+                                <p>Years of Industry Experience</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>100%</h4>
+                                <p>Commitment to Sustainability</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO: Services Catalogue mapped directly from the ASCREATIVE Catalogue PDF -->
+        <section class="services" id="services">
+            <div class="container">
+                <header class="section-header fade-in-up">
+                    <h2>Our Service Catalogue</h2>
+                    <p>Comprehensive end-to-end solutions that deliver real value. Transforming ideas into experiences, leveraging innovative technology, and championing sustainability.</p>
+                </header>
+                <div class="services-grid">
+                    
+                    <!-- Service 1: Event Production -->
+                    <article class="service-card fade-in-up delay-1">
+                        <i data-lucide="calendar-check" class="service-icon" aria-hidden="true"></i>
+                        <h3>Event Production & Management</h3>
+                        <p>End-to-end event planning ensuring objectives are met and memorable experiences are delivered.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle"></i> Vendor & Stakeholder Coordination</li>
+                            <li><i data-lucide="check-circle"></i> Onsite Operations & Crowd Control</li>
+                            <li><i data-lucide="check-circle"></i> Risk Management & Contingency</li>
+                        </ul>
+                    </article>
+
+                    <!-- Service 2: Structures & Audio Visual -->
+                    <article class="service-card fade-in-up delay-2">
+                        <i data-lucide="speaker" class="service-icon" aria-hidden="true"></i>
+                        <h3>Structures, Deco & AV Lighting</h3>
+                        <p>Complete physical and atmospheric setups for events of any scale, providing premium immersive environments.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle"></i> Event Structures & Space Design</li>
+                            <li><i data-lucide="check-circle"></i> Custom Event Decoration</li>
+                            <li><i data-lucide="check-circle"></i> Professional Audio & Lighting Setup</li>
+                        </ul>
+                    </article>
+
+                    <!-- Service 3: Video & Creative -->
+                    <article class="service-card fade-in-up delay-3">
+                        <i data-lucide="video" class="service-icon" aria-hidden="true"></i>
+                        <h3>Creative & Video Production</h3>
+                        <p>High-quality visual storytelling, concept design, and promotional projects from script to final delivery.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle"></i> Concept Development & Storyboarding</li>
+                            <li><i data-lucide="check-circle"></i> Filming, Editing & Post-Production</li>
+                            <li><i data-lucide="check-circle"></i> Motion Graphics & Sound Design</li>
+                        </ul>
+                    </article>
+
+                    <!-- Service 4: Environmental -->
+                    <article class="service-card fade-in-up delay-1">
+                        <i data-lucide="leaf" class="service-icon" aria-hidden="true"></i>
+                        <h3>Environmental Services</h3>
+                        <p>Eco-friendly solutions emphasizing sustainability, regulatory compliance, and clean public operations.</p>
+                        <ul class="service-features">
+                            <li><i data-lucide="check-circle"></i> Complete Waste Management Facilities</li>
+                            <li><i data-lucide="check-circle"></i> Comprehensive Public Cleansing</li>
+                            <li><i data-lucide="check-circle"></i> Eco-friendly Event Technologies</li>
+                        </ul>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO Authority/Backlink Strategy: Providing linkable resources and demonstrating expertise -->
+        <section class="insights" id="insights">
+            <div class="container">
+                <header class="section-header fade-in-up">
+                    <h2>Industry Insights & Resources</h2>
+                    <p>Explore our proven methodologies and data-driven success stories across the creative, event, and environmental sectors.</p>
+                </header>
+                <div class="insights-grid">
+                    <article class="insight-card fade-in-up delay-1">
+                        <span class="insight-tag">Case Study</span>
+                        <h3>Transforming Public Spaces: MBPJ Cleansing Success</h3>
+                        <p>Read how our tailored public cleansing and waste segregation strategies improved urban hygiene and compliance for local municipalities.</p>
+                        <a href="#" class="read-more" aria-label="Read MBPJ Case Study">Read Case Study <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                    <article class="insight-card fade-in-up delay-2">
+                        <span class="insight-tag">Resource Guide</span>
+                        <h3>The 2026 Guide to Sustainable Event Production</h3>
+                        <p>A toolkit for event managers to implement eco-friendly event technologies and waste minimization strategies without compromising on quality.</p>
+                        <a href="#" class="read-more" aria-label="Download Sustainable Event Guide">Download Guide <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO: Client trust signals support E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness). Taken directly from PDF -->
+        <section class="clients" id="clients">
+            <div class="container">
+                <header class="section-header fade-in-up">
+                    <h2>Our Trusted Clients</h2>
+                    <p>A wide variety of business fields supporting everything from domestic life to large-scale industry.</p>
+                </header>
+                <div class="clients-grid fade-in-up delay-1">
+                    <div class="client-item" title="Client: MPKS & MBPJ">MPKS & MBPJ</div>
+                    <div class="client-item" title="Client: Cradle">Cradle</div>
+                    <div class="client-item" title="Client: Red Bull">Red Bull</div>
+                    <div class="client-item" title="Client: Astro">Astro</div>
+                    <div class="client-item" title="Client: Genting">Genting</div>
+                    <div class="client-item" title="Client: Sime Darby & UMW">Sime Darby & UMW</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEO: Transactional intent fulfillment. Includes exact Contact Info from PDF Page 13 -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <div class="contact-card fade-in-up">
+                    <div class="contact-info">
+                        <h2>Contact Us</h2>
+                        <p>Initiate your next major project or digital transformation with ASCREATIVE.</p>
+                        <address class="info-list" style="font-style: normal;">
+                            <div class="info-item">
+                                <i data-lucide="map-pin" aria-hidden="true"></i>
+                                <span>Lot 14, Jalan Perusahaan Dua,<br>Batu Caves Industrial Area,<br>68100 Batu Caves, Selangor, Malaysia.</span>
+                            </div>
+                            <div class="info-item">
+                                <i data-lucide="phone" aria-hidden="true"></i>
+                                <span>Adam Shah: <a href="tel:+60173746240">+60 17 374 6240</a><br>Saiful Rizan: <a href="tel:+60122197979">+60 12 219 7979</a></span>
+                            </div>
+                            <div class="info-item">
+                                <i data-lucide="mail" aria-hidden="true"></i>
+                                <span><a href="mailto:Adam.ascsr@gmail.com">Adam.ascsr@gmail.com</a><br><a href="mailto:saiful.ascsr@gmail.com">saiful.ascsr@gmail.com</a></span>
+                            </div>
+                            <div class="info-item">
+                                <i data-lucide="globe" aria-hidden="true"></i>
+                                <span><a href="https://www.ascreative.asia">www.ascreative.asia</a></span>
+                            </div>
+                        </address>
+                    </div>
+                    <form id="contactForm" class="contact-form" aria-label="Contact Form">
+                        <div class="form-group">
+                            <label for="contact-name" class="visually-hidden" style="display:none;">Your Name</label>
+                            <input type="text" id="contact-name" name="name" placeholder="Your Name" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email" class="visually-hidden" style="display:none;">Email Address</label>
+                            <input type="email" id="contact-email" name="email" placeholder="Email Address" required aria-required="true">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-service" class="visually-hidden" style="display:none;">Service of Interest</label>
+                            <select id="contact-service" name="service" style="width: 100%; padding: 1rem 1.5rem; border-radius: 12px; background: rgba(0,0,0,0.2); border: 1px solid var(--border); color: var(--text-main); font-family: var(--font-body); font-size: 1rem; outline: none; transition: all var(--trans-fast);" required>
+                                <option value="" disabled selected style="color: #333;">Select a Service</option>
+                                <option value="event-production" style="color: #333;">Event Production</option>
+                                <option value="creative-video" style="color: #333;">Creative / Video Production</option>
+                                <option value="environmental" style="color: #333;">Environmental Services</option>
+                                <option value="other" style="color: #333;">Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message" class="visually-hidden" style="display:none;">Project Inquiry Details</label>
+                            <textarea id="contact-message" name="message" placeholder="Tell us about your project or inquiry" rows="4" required aria-required="true"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" aria-label="Submit contact form">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo" aria-label="ASCREATIVE Home">
+                    <i data-lucide="layers" class="logo-icon" aria-hidden="true"></i>
+                    <span>ASCREATIVE</span>
+                </a>
+                <p>Delivering immersive brand experiences, innovative technology, and championing sustainability all while delivering excellence that stands the test of time.</p>
+            </div>
+            <nav class="footer-links" aria-label="Footer Navigation">
+                <div class="link-group">
+                    <h4>Solutions</h4>
+                    <a href="#services">Creative & Video Production</a>
+                    <a href="#services">Event Production & AV</a>
+                    <a href="#services">Environmental Cleansing</a>
+                </div>
+                <div class="link-group">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#insights">Insights & Guides</a>
+                    <a href="#clients">Client Portfolio</a>
+                    <a href="#contact">Contact Support</a>
+                </div>
+            </nav>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 AS Creative Solution & Resources. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Wrap the logic inside DOMContentLoaded so it waits for all deferred scripts (like Lucide) to finish loading
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Initialize Lucide Icons securely
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.error("Lucide icons failed to load.");
+            }
+
+            // Navbar Scroll Effect
+            const navbar = document.querySelector('.navbar');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }, { passive: true });
+
+            // Mobile Menu Toggle for Accessibility
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isActive = navLinks.classList.toggle('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', isActive);
+                    
+                    const icon = isActive ? 'x' : 'menu';
+                    mobileMenuBtn.innerHTML = `<i data-lucide="${icon}" aria-hidden="true"></i>`;
+                    if (typeof lucide !== 'undefined') lucide.createIcons();
+                });
+            }
+
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        mobileMenuBtn.innerHTML = `<i data-lucide="menu" aria-hidden="true"></i>`;
+                        if (typeof lucide !== 'undefined') lucide.createIcons();
+                    }
+                });
+            });
+
+            // Intersection Observer for scroll animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Form Submission handling (simulation for Contact Form)
+            const contactForm = document.getElementById('contactForm');
+
+            if(contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Change button state
+                    const btn = contactForm.querySelector('button[type="submit"]');
+                    const originalText = btn.innerText;
+                    
+                    btn.innerHTML = 'Sending...';
+                    btn.disabled = true;
+                    
+                    // Simulate API call for demonstration
+                    setTimeout(() => {
+                        btn.innerHTML = 'Message Sent!';
+                        btn.style.background = 'var(--secondary)'; // Uses the emerald green color defined in CSS
+                        contactForm.reset();
+                        
+                        setTimeout(() => {
+                            btn.innerHTML = originalText;
+                            btn.disabled = false;
+                            btn.style.background = ''; // Resets back to default CSS background
+                        }, 3000);
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
