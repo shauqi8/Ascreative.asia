@@ -40,6 +40,12 @@ import Hero from '../components/Hero.astro';
                   <h4>Email Support</h4>
                   <a href="mailto:Adam.ascsr@gmail.com">Adam.ascsr@gmail.com</a>
                   <a href="mailto:saiful.ascsr@gmail.com">saiful.ascsr@gmail.com</a>
+                  <div class="email-actions" style="margin-top: 1rem;">
+                    <a href="mailto:Adam.ascsr@gmail.com,saiful.ascsr@gmail.com" class="btn btn-secondary btn-sm" style="padding: 0.5rem 1.25rem; font-size: 0.8rem;">
+                      <i data-lucide="mails" style="width: 14px; height: 14px; margin-right: 6px;"></i>
+                      Email Both Directly
+                    </a>
+                  </div>
                 </div>
               </div>
 
@@ -63,7 +69,14 @@ import Hero from '../components/Hero.astro';
           <!-- Contact Form -->
           <div class="contact-form-panel glass-card fade-in-up delay-1">
             <h3 class="form-heading">Send an Inquiry</h3>
+            
+            <div id="form-status" class="form-status hidden"></div>
+
             <form class="contact-form" id="contact-form">
+              <!-- Hidden fields for Web3Forms -->
+              <input type="hidden" name="from_name" value="AS Creative Website" />
+              <input type="hidden" name="subject" value="New Inquiry from Website" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
               <div class="form-group">
                 <label for="name">Full Name</label>
                 <input type="text" id="name" name="name" placeholder="John Doe" required />
@@ -209,4 +222,81 @@ import Hero from '../components/Hero.astro';
     .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
     .contact-form-panel { padding: 2rem; }
   }
+
+  /* Status Messages */
+  .form-status {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+  .form-status.success {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #10b981;
+  }
+  .form-status.error {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+  }
+  .form-status.hidden { display: none; }
 </style>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const statusBox = document.getElementById('form-status');
+    const submitBtn = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    if (!form || !statusBox || !submitBtn) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        formData.append("access_key", "a6059198-24ef-40bb-b57c-e4850fe5a2fc");
+
+        const originalBtnHtml = submitBtn.innerHTML;
+
+        // Loading State
+        submitBtn.innerHTML = 'Sending Inquiry... <span class="spinner"></span>';
+        submitBtn.disabled = true;
+        statusBox.classList.add('hidden');
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                statusBox.textContent = "Success! Your message has been sent to Saiful and Adam.";
+                statusBox.className = "form-status success";
+                form.reset();
+                
+                // Reset button after success
+                setTimeout(() => {
+                  statusBox.classList.add('hidden');
+                }, 8000);
+            } else {
+                statusBox.textContent = "Error: " + (data.message || "Failed to send.");
+                statusBox.className = "form-status error";
+            }
+
+        } catch (error) {
+            statusBox.textContent = "Something went wrong. Please check your connection and try again.";
+            statusBox.className = "form-status error";
+        } finally {
+            submitBtn.innerHTML = originalBtnHtml;
+            submitBtn.disabled = false;
+        }
+    });
+  });
+</script>
