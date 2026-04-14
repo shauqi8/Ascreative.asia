@@ -1,184 +1,111 @@
 ---
 ---
-<footer class="footer">
-  <div class="footer-container">
-    <div class="footer-grid">
-      <!-- Brand -->
-      <div class="footer-brand">
-        <div class="brand-logo"><span class="logo-as">AS</span> Creative</div>
-        <p class="brand-tagline">Where Creativity, Technology, Events, and Sustainability Come Together</p>
-        <address class="brand-address">
-          Lot 14, Jalan Perusahaan Dua,<br />
-          Batu Caves Industrial Area,<br />
-          68100 Batu Caves, Selangor, Malaysia.
-        </address>
+<footer>
+  <div class="container footer-container">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <i data-lucide="layers" class="logo-icon"></i>
+        <span>ASCREATIVE</span>
+      </a>
+      <p>Where Creativity, Technology, Events, and Sustainability Come Together. Delivering immersive experiences for over 20 years.</p>
+    </div>
+    
+    <div class="footer-links">
+      <div class="link-group">
+        <h4>Navigation</h4>
+        <a href="/">Home</a>
+        <a href="/about">About Us</a>
+        <a href="/services">Services</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/contact">Contact</a>
       </div>
-
-      <!-- Quick Links -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Quick Links</h4>
-        <ul class="footer-links">
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/services">Our Services</a></li>
-          <li><a href="/portfolio">Portfolio</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-col">
-        <h4 class="footer-heading">Contact</h4>
-        <div class="contact-entries">
-          <div class="contact-entry">
-            <span class="contact-name">Adam Shah</span>
-            <a href="mailto:Adam.ascsr@gmail.com">Adam.ascsr@gmail.com</a>
-            <a href="tel:+60173746240">+60 17-374 6240</a>
-          </div>
-          <div class="contact-entry">
-            <span class="contact-name">Saiful Rizan</span>
-            <a href="mailto:saiful.ascsr@gmail.com">saiful.ascsr@gmail.com</a>
-            <a href="tel:+60122197979">+60 12-219 7979</a>
-          </div>
-        </div>
+      
+      <div class="link-group">
+        <h4>Contact Info</h4>
+        <a href="mailto:Adam.ascsr@gmail.com">Adam.ascsr@gmail.com</a>
+        <a href="tel:+60173746240">+60 17-374 6240</a>
+        <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem;">
+          Lot 14, Jalan Perusahaan Dua,<br/>
+          Batu Caves Industrial Area,<br/>
+          68100 Batu Caves, Selangor, Malaysia
+        </p>
       </div>
     </div>
-
-    <div class="footer-bottom">
+  </div>
+  
+  <div class="footer-bottom">
+    <div class="container">
       <p>&copy; {new Date().getFullYear()} AS Creative Solution & Resources. All rights reserved.</p>
-      <p class="footer-website">www.ascreative.asia</p>
     </div>
   </div>
 </footer>
 
 <style>
-  .footer {
-    background: var(--color-bg-darker);
-    border-top: 1px solid var(--color-border);
-    padding: 4rem 2rem 2rem;
-    margin-top: auto;
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 4rem;
+    background: var(--bg-base);
+    position: relative;
+    z-index: 10;
   }
-
+  
   .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 3rem;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    margin-bottom: 4rem;
   }
-
-  .brand-logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--color-text);
+  
+  .footer-brand .logo {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-family: var(--font-heading); font-size: 1.5rem;
+    font-weight: 800; color: var(--text-main); letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
   }
-
-  .logo-as {
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent-purple));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .brand-tagline {
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1.25rem;
-  }
-
-  .brand-address {
-    font-style: normal;
-    color: var(--color-text-dim);
-    font-size: 0.875rem;
+  
+  .logo-icon { color: var(--primary); }
+  
+  .footer-brand p {
+    color: var(--text-muted);
     line-height: 1.7;
+    max-width: 400px;
   }
-
-  .footer-heading {
-    font-family: var(--font-heading);
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--color-text);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1.25rem;
-  }
-
+  
   .footer-links {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
-
-  .footer-links a {
-    color: var(--color-text-dim);
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: color 0.2s ease;
-  }
-
-  .footer-links a:hover { color: var(--color-primary); }
-
-  .contact-entries {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .contact-entry {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .contact-name {
-    color: var(--color-text);
+  
+  .link-group h4 {
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 600;
-    font-size: 0.875rem;
   }
-
-  .contact-entry a {
-    color: var(--color-text-dim);
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s ease;
+  
+  .link-group a {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    transition: color var(--trans-fast);
   }
-
-  .contact-entry a:hover { color: var(--color-accent-cyan); }
-
+  
+  .link-group a:hover {
+    color: var(--primary-light);
+  }
+  
   .footer-bottom {
-    border-top: 1px solid var(--color-border);
-    padding-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .footer-bottom p {
-    color: var(--color-text-dim);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--text-muted);
     font-size: 0.85rem;
   }
 
-  .footer-website {
-    color: var(--color-primary) !important;
-  }
-
-  @media (max-width: 768px) {
-    .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .footer-bottom {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+  @media (max-width: 992px) {
+    .footer-container { grid-template-columns: 1fr; gap: 3rem; }
   }
 </style>

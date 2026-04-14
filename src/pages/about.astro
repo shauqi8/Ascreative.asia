@@ -6,163 +6,202 @@ import Hero from '../components/Hero.astro';
 <Layout title="About Us" description="Learn about AS Creative Solution & Resources - 20 years of excellence in creative technology, event production, and environmental services.">
   <Hero
     eyebrow="Our Story"
-    title="About AS Creative"
-    subtitle="A multi-disciplinary solutions provider with 20+ years of experience"
+    title="Driven by Innovation & Excellence"
+    subtitle="A multi-disciplinary solutions provider with 20+ years of experience delivering impactful results in Malaysia."
+    badges={['20+ Years Experience', 'Integrated Solutions', 'Sustainable Future']}
   />
 
   <div class="page-content">
-    <section class="section">
-      <div class="content-block">
-        <div class="section-label">Who We Are</div>
-        <h2 class="section-title">Leading the Way in Integrated Solutions</h2>
-        <p>
-          <strong>AS Creative Solution &amp; Resources</strong> is a leading integrated solutions provider
-          in creative technology, event production, and environmental services. With more than 20 years of
-          experience, we have built a reputation for excellence, innovation, and reliability across diverse
-          industries and large scale projects.
-        </p>
-        <p>
-          We combine cutting edge technology with creative expertise to deliver immersive experiences that
-          connect audiences and elevate brand impact. From concept design to seamless execution, our team
-          of seasoned professionals manages every detail including planning, production, logistics, and
-          on-site delivery to ensure events that are memorable, meaningful, and impactful.
-        </p>
-      </div>
-
-      <div class="pillars">
-        <div class="pillar-card">
-          <div class="pillar-icon">💡</div>
-          <h3>Creative & Technology</h3>
-          <p>Web development, digital marketing, multimedia, and content creation leveraging the latest digital tools.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🎪</div>
-          <h3>Event Production</h3>
-          <p>End-to-end event management from concept through execution with professional technical support.</p>
-        </div>
-        <div class="pillar-card">
-          <div class="pillar-icon">🌿</div>
-          <h3>Environment</h3>
-          <p>Sustainable waste management, public cleansing, and eco-friendly facility services.</p>
+    <section class="section" id="story">
+      <div class="container overflow-hidden">
+        <div class="about-grid">
+          <div class="about-visual fade-in-up" aria-hidden="true">
+            <i data-lucide="award" class="about-visual-icon"></i>
+            <span class="about-visual-label">20 Years of Quality</span>
+          </div>
+          <article class="about-text fade-in-up delay-1">
+            <div class="section-label">Who We Are</div>
+            <h2>Leading the Way in Integrated Solutions</h2>
+            <p>
+              <strong>AS Creative Solution &amp; Resources</strong> is a leading integrated solutions provider
+              in creative technology, event production, and environmental services. With more than 20 years of
+              experience, we have built a reputation for excellence, innovation, and reliability across diverse
+              industries and large scale projects.
+            </p>
+            <p>
+              We combine cutting edge technology with creative expertise to deliver immersive experiences that
+              connect audiences and elevate brand impact. From concept design to seamless execution, our team
+              of seasoned professionals manages every detail ensures events are memorable, meaningful, and impactful.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section commitment-section">
-      <div class="commitment-inner">
-        <div class="section-label">Our Commitment</div>
-        <h2 class="section-title">Championing Sustainability</h2>
-        <p>
-          Our commitment to environmental stewardship drives us to develop and implement sustainable
-          practices across all aspects of our work. We provide tailored environmental solutions that align
-          with global standards and help clients operate responsibly, from waste minimization strategies
-          to eco-friendly event technologies.
-        </p>
-        <blockquote class="quote">
-          "We are passionate about transforming ideas into experiences, leveraging innovative technology,
-          and championing sustainability — all while delivering excellence that stands the test of time."
-        </blockquote>
+    <section class="section" id="pillars">
+      <div class="container">
+        <header class="section-header fade-in-up">
+          <h2>Our Core Pillars</h2>
+          <p>We operate across three major industry verticals, bringing professional expertise to every engagement.</p>
+        </header>
+
+        <div class="pillars-grid">
+          <div class="glass-card fade-in-up delay-1">
+            <div class="pillar-icon">💡</div>
+            <h3>Creative & Technology</h3>
+            <p>Web development, digital marketing, multimedia, and content creation leveraging the latest digital tools to transform your digital presence.</p>
+          </div>
+          <div class="glass-card fade-in-up delay-2">
+            <div class="pillar-icon">🎪</div>
+            <h3>Event Production</h3>
+            <p>End-to-end event management from concept through execution. We handle structures, deco, audio visual, lighting, and onsite operations.</p>
+          </div>
+          <div class="glass-card fade-in-up delay-3">
+            <div class="pillar-icon">🌿</div>
+            <h3>Environment</h3>
+            <p>Providing professional public cleansing and facilities management services with a firm commitment to environmental stewardship.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="commitment">
+      <div class="container">
+        <div class="commitment-card glass-card fade-in-up">
+          <div class="commitment-content">
+            <div class="section-label">Our Commitment</div>
+            <h2>Championing Sustainability</h2>
+            <p>
+              Our commitment to environmental stewardship drives us to develop and implement sustainable
+              practices across all aspects of our work. We provide tailored environmental solutions that align
+              with global standards and help clients operate responsibly.
+            </p>
+            <blockquote class="quote">
+              "We are passionate about transforming ideas into experiences, leveraging innovative technology,
+              and championing sustainability — all while delivering excellence that stands the test of time."
+            </blockquote>
+          </div>
+        </div>
       </div>
     </section>
   </div>
 </Layout>
 
 <style>
-  .page-content { padding-top: 2rem; }
+  .page-content { position: relative; z-index: 10; }
 
-  .section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+  .overflow-hidden { overflow: hidden; }
 
   .section-label {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--primary-light);
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 0.75rem;
   }
 
-  .section-title {
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-visual {
+    width: 100%;
+    height: 480px;
+    background: var(--bg-surface);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 28px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual-icon { color: var(--primary); width: 80px; height: 80px; }
+  .about-visual-label {
     font-family: var(--font-heading);
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: 1.25rem;
     font-weight: 700;
-    color: var(--color-text);
+    color: var(--text-main);
+  }
+
+  .about-text h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, white, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
     margin-bottom: 1.5rem;
   }
 
-  .content-block p {
-    color: var(--color-text-dim);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-    max-width: 780px;
-  }
-
-  .pillars {
+  .pillars-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
   }
 
-  .pillar-card {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    padding: 2rem;
-    transition: all 0.25s ease;
-  }
+  .pillar-icon { font-size: 2.5rem; margin-bottom: 1.5rem; }
 
-  .pillar-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.1);
-    transform: translateY(-4px);
-  }
-
-  .pillar-icon { font-size: 2rem; margin-bottom: 1rem; }
-
-  .pillar-card h3 {
+  .glass-card h3 {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1rem;
   }
 
-  .pillar-card p {
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-    line-height: 1.65;
+  .glass-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 0px;
   }
 
-  .commitment-section {
-    background: rgba(30, 41, 59, 0.5);
-    border-radius: 1.5rem;
-    max-width: 100%;
-    padding-left: clamp(1rem, 8%, 8rem);
-    padding-right: clamp(1rem, 8%, 8rem);
+  .commitment-card {
+    padding: 5rem 4rem;
+    display: block;
   }
 
-  .commitment-inner { max-width: 780px; }
-
-  .commitment-section p {
-    color: var(--color-text-dim);
-    font-size: 1.05rem;
+  .commitment-content { max-width: 800px; }
+  .commitment-content h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-main);
+  }
+  .commitment-content p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .quote {
-    border-left: 3px solid var(--color-primary);
-    padding: 1.25rem 1.5rem;
+    border-left: 4px solid var(--primary);
+    padding: 1.5rem 2rem;
     background: rgba(59, 130, 246, 0.05);
-    border-radius: 0 0.75rem 0.75rem 0;
+    border-radius: 0 1rem 1rem 0;
     font-style: italic;
-    color: var(--color-text);
-    font-size: 1.1rem;
+    color: var(--text-main);
+    font-size: 1.25rem;
     line-height: 1.7;
+  }
+
+  @media (max-width: 992px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .commitment-card { padding: 3rem 2rem; }
   }
 </style>

@@ -1,0 +1,40 @@
+# Implementation Plan: Scroll Performance Optimization
+
+The user reported that the site feels "heavy" and doesn't move smoothly when scrolling. My investigation has identified several GPU-intensive CSS patterns that are the likely causes of this "jank" (dropped frames).
+
+## User Review Required
+
+> [!IMPORTANT]
+> To improve performance significantly, I propose reducing the glassmorphism blur intensity and potentially disabling it on mobile devices. This will change the visual look slightly but will result in a much smoother experience.
+
+## Proposed Changes
+
+### Core Styles & Optimization
+
+#### [MODIFY] [global.css](file:///c:/Users/user/Downloads/txt file/Ascreative/src/styles/global.css)
+- Reduce `--glass-blur` from `16px` to `12px` (or `8px` on mobile) to lower the GPU cost of `backdrop-filter`.
+- Add `will-change: transform, opacity;` to `.fade-in-up` to hardware-accelerate scroll animations.
+- Add `will-change: transform;` to `.blob` elements in the ambient background.
+- Add `content-visibility: auto; contain-intrinsic-size: 1px 1000px;` to the `.section` class to skip rendering off-screen content.
+- Ensure all hover states use `transform: translate3d()` to prevent layout shifts.
+
+#### [MODIFY] [Layout.astro](file:///c:/Users/user/Downloads/txt file/Ascreative/src/layouts/Layout.astro)
+- Throttling the scroll event listener for the navbar to reduce execution frequency.
+- Adding a `pointer-events: none` safety to the `.ambient-bg` to ensure it doesn't interfere with interaction (already present, but will verify).
+
+#### [MODIFY] [Hero.astro](file:///c:/Users/user/Downloads/txt file/Ascreative/src/components/Hero.astro)
+- Optimize the `.hero-scanlines` animation (ensure it's using GPU-friendly properties).
+- Add `will-change: transform;` to any animated hero elements.
+
+### Content Visibility
+- Apply `content-visibility: auto` to major sections in `index.astro`, `about.astro`, etc., to reduce the total number of elements the browser needs to track during a long scroll (the page is 5000px high).
+
+## Verification Plan
+
+### Automated Tests
+- Run `npm run build` to ensure no regressions.
+- Use the browser subagent to measure FPS during scroll after the fix.
+
+### Manual Verification
+- Verify the "heaviness" is gone on both desktop and mobile viewports.
+- Ensure the glassmorphism aesthetic is still preserved.

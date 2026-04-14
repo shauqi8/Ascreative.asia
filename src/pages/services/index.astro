@@ -19,113 +19,118 @@ const serviceIcons: Record<string, string> = {
 };
 ---
 
-<Layout title="Our Services">
+<Layout title="Our Services" description="Explore AS Creative's comprehensive end-to-end solutions integrating creativity, technology, events, and sustainability.">
   <Hero
     eyebrow="Our Capabilities"
-    title="Services"
-    subtitle="Comprehensive end-to-end solutions integrating creativity, technology, events, and sustainability."
+    title="Service Catalogue"
+    subtitle="Comprehensive end-to-end solutions integrating creativity, technology, events, and sustainability across Malaysia."
+    badges={['Event Production', 'Creative & Tech', 'Environment']}
   />
 
   <div class="page-content">
-    <section class="section">
-      <div class="section-header">
-        <div class="section-label">Event Production</div>
-        <h2 class="section-title">Event & Experiential Services</h2>
-        <p class="section-subtitle">From structures and stages to AV and full event management.</p>
-      </div>
-      <div class="grid-3">
-        {eventProd.map(service => (
-          <ServiceCard
-            title={service.data.title}
-            description={service.data.description}
-            icon={serviceIcons[service.id] ?? '🎯'}
-            link={`/services/${service.id}`}
-          />
-        ))}
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-header">
-        <div class="section-label">Digital & Creative</div>
-        <h2 class="section-title">Creative & Technology</h2>
-        <p class="section-subtitle">Web, digital marketing, content, and resource management solutions.</p>
-      </div>
-      <div class="grid-3">
-        {creativeTech.map(service => (
-          <ServiceCard
-            title={service.data.title}
-            description={service.data.description}
-            icon={serviceIcons[service.id] ?? '💡'}
-            link={`/services/${service.id}`}
-          />
-        ))}
+    <section class="section" id="event-production">
+      <div class="container">
+        <header class="section-header fade-in-up">
+          <div class="section-label">Pillar 01</div>
+          <h2>Event & Experiential Services</h2>
+          <p>From architectural structures and stages to high-end AV and full event management. We handle the production so you can focus on the audience.</p>
+        </header>
+        <div class="services-grid">
+          {eventProd.map((service, index) => (
+            <ServiceCard
+              title={service.data.title}
+              description={service.data.description}
+              icon={serviceIcons[service.id] ?? '🎯'}
+              link={`/services/${service.id}`}
+              class={`delay-${(index % 4) + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-header">
-        <div class="section-label">Sustainability</div>
-        <h2 class="section-title">Environmental Services</h2>
-        <p class="section-subtitle">Responsible waste and facility management solutions.</p>
+    <section class="section" id="creative-tech">
+      <div class="container">
+        <header class="section-header fade-in-up">
+          <div class="section-label">Pillar 02</div>
+          <h2>Creative & Technology</h2>
+          <p>Cutting-edge web development, multimedia, and digital marketing solutions. Leveraging the latest digital tools to transform brand presence.</p>
+        </header>
+        <div class="services-grid">
+          {creativeTech.map((service, index) => (
+            <ServiceCard
+              title={service.data.title}
+              description={service.data.description}
+              icon={serviceIcons[service.id] ?? '💡'}
+              link={`/services/${service.id}`}
+              class={`delay-${(index % 4) + 1}`}
+            />
+          ))}
+        </div>
       </div>
-      <div class="grid-3">
-        {environment.map(service => (
-          <ServiceCard
-            title={service.data.title}
-            description={service.data.description}
-            icon={serviceIcons[service.id] ?? '🌿'}
-            link={`/services/${service.id}`}
-          />
-        ))}
+    </section>
+
+    <section class="section" id="environment">
+      <div class="container">
+        <header class="section-header fade-in-up">
+          <div class="section-label">Pillar 03</div>
+          <h2>Environmental Services</h2>
+          <p>Professional public cleansing and facilities management with a firm commitment to sustainability and global environmental standards.</p>
+        </header>
+        <div class="services-grid">
+          {environment.map((service, index) => (
+            <ServiceCard
+              title={service.data.title}
+              description={service.data.description}
+              icon={serviceIcons[service.id] ?? '🌿'}
+              link={`/services/${service.id}`}
+              class={`delay-${(index % 4) + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   </div>
 </Layout>
 
 <style>
-  .page-content { padding-top: 1rem; }
-
-  .section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-  }
-
-  .section-header {
-    margin-bottom: 2.5rem;
-  }
+  .page-content { position: relative; z-index: 10; padding-top: 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
   .section-label {
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--color-primary);
+    color: var(--primary-light);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-  }
-
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 700;
-    color: var(--color-text);
     margin-bottom: 0.75rem;
   }
 
-  .section-subtitle {
-    color: var(--color-text-dim);
-    font-size: 1rem;
-    line-height: 1.65;
+  .section-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-heading);
+    background: linear-gradient(135deg, white, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .grid-3 {
+  .section-header p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    max-width: 750px;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
   }
 
   @media (max-width: 768px) {
-    .grid-3 { grid-template-columns: 1fr; }
+    .section-header h2 { font-size: 2rem; }
   }
 </style>

@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
-import ThreeBackground from '../components/ThreeBackground.astro';
 import { ClientRouter } from 'astro:transitions';
 
 interface Props {
@@ -12,7 +11,7 @@ interface Props {
 
 const {
   title,
-  description = 'AS Creative Solution & Resources - Where Creativity, Technology, Events, and Sustainability Come Together'
+  description = 'AS Creative Solution & Resources — Premier integrated solutions in event production, creative technology, and environmental services across Malaysia.'
 } = Astro.props;
 ---
 
@@ -24,29 +23,29 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <!-- Google Fonts: Space Grotesk + DM Sans -->
+    <!-- Fonts: Inter + Outfit (exact match from index.html) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>{title} | AS Creative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;700;800&display=swap" rel="stylesheet" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <title>{title} | ASCREATIVE</title>
     <ClientRouter />
   </head>
   <body>
-    <!-- Custom cursor -->
-    <div class="cursor-follower"></div>
+    <!-- Ambient drifting blobs (non-hero background) -->
+    <div class="ambient-bg" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
 
-    <!-- Three.js particle background -->
-    <ThreeBackground />
-
-    <!-- Navigation -->
     <Navigation />
 
-    <!-- Page Content -->
     <div id="page-content">
       <slot />
     </div>
 
-    <!-- Footer -->
     <Footer />
 
     <style>
@@ -54,61 +53,65 @@ const {
         position: relative;
         z-index: 1;
       }
-
-      /* Custom cursor */
-      .cursor-follower {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--color-accent-purple);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: all 0.1s ease;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: difference;
-      }
-
-      .cursor-follower::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 4px;
-        height: 4px;
-        background: var(--color-accent-pink);
-        border-radius: 50%;
-      }
-
-      @media (max-width: 768px) {
-        .cursor-follower { display: none; }
-      }
     </style>
 
     <script>
+      // Scroll observer for .fade-in-up elements (non-hero)
       document.addEventListener('astro:page-load', () => {
-        const cursor = document.querySelector('.cursor-follower') as HTMLElement;
-        if (!cursor) return;
+        // Init lucide icons
+        if (typeof (window as any).lucide !== 'undefined') {
+          (window as any).lucide.createIcons();
+        }
 
-        document.addEventListener('mousemove', (e) => {
-          cursor.style.left = e.clientX + 'px';
-          cursor.style.top = e.clientY + 'px';
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // Once visible, stop observing to save resources
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up:not(.hero .fade-in-up)').forEach(el => {
+          observer.observe(el);
         });
 
-        const interactive = document.querySelectorAll('a, button, .card');
-        interactive.forEach(el => {
-          el.addEventListener('mouseenter', () => {
-            cursor.style.width = '40px';
-            cursor.style.height = '40px';
-            cursor.style.backgroundColor = 'rgba(168, 85, 247, 0.2)';
+        // Navbar scroll glass effect - Throttled with requestAnimationFrame
+        const navbar = document.getElementById('mainNav');
+        if (navbar) {
+          let lastScrollY = window.scrollY;
+          let ticking = false;
+
+          const updateNavbar = () => {
+            if (navbar) {
+              navbar.classList.toggle('scrolled', lastScrollY > 40);
+            }
+            ticking = false;
+          };
+
+          window.addEventListener('scroll', () => {
+            lastScrollY = window.scrollY;
+            if (!ticking) {
+              window.requestAnimationFrame(updateNavbar);
+              ticking = true;
+            }
+          }, { passive: true }); // Passive listener for better scroll performance
+        }
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        if (mobileMenuBtn && navLinks) {
+          mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
           });
-          el.addEventListener('mouseleave', () => {
-            cursor.style.width = '20px';
-            cursor.style.height = '20px';
-            cursor.style.backgroundColor = 'transparent';
-          });
-        });
+        }
       });
     </script>
   </body>

@@ -18,44 +18,46 @@ const { service } = Astro.props;
   <Hero
     eyebrow={service.data.category}
     title={service.data.title}
-    subtitle="Delivering excellence and reliability for every project."
+    subtitle="Delivering excellence and reliability through integrated solutions and professional expertise."
+    badges={['Expert Implementation', 'Custom Solutions', '24/7 Support']}
   />
 
   <div class="page-content">
-    <section class="section">
-      <div class="content-grid">
-        <div class="main-content">
-          <h2 class="content-heading">Overview</h2>
-          <p class="body-text">{service.data.description}</p>
+    <section class="section" id="service-detail">
+      <div class="container container-padding">
+        <div class="content-grid">
+          <article class="main-content fade-in-up">
+            <div class="section-label">Service Overview</div>
+            <h2 class="content-heading">Description</h2>
+            <div class="body-text">
+              <p>{service.data.description}</p>
+            </div>
+          </article>
+
+          {service.data.features && service.data.features.length > 0 && (
+            <aside class="features-panel glass-card fade-in-up delay-1">
+              <h3 class="features-heading">
+                <i data-lucide="check-circle-2" style="width: 20px; height: 20px; color: var(--primary-light);"></i>
+                Key Capabilities
+              </h3>
+              <ul class="features-list">
+                {service.data.features.map(feature => (
+                  <li class="feature-item">
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </aside>
+          )}
         </div>
 
-        {service.data.features && service.data.features.length > 0 && (
-          <div class="features-panel">
-            <h3 class="features-heading">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-              Key Capabilities
-            </h3>
-            <ul class="features-list">
-              {service.data.features.map(feature => (
-                <li class="feature-item">
-                  <span class="feature-dot"></span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
+        <div class="inquiry-cta fade-in-up glass-card">
+          <div class="cta-glow"></div>
+          <div class="cta-content">
+            <h2 class="cta-title">Interested in this service?</h2>
+            <p class="cta-subtitle">Our team is ready to discuss how we can tailor this solution to your project goals.</p>
+            <a href="/contact" class="btn btn-primary">Request a Proposal</a>
           </div>
-        )}
-      </div>
-
-      <div class="inquiry-cta">
-        <div class="cta-glow"></div>
-        <div class="cta-content">
-          <h3>Interested in this service?</h3>
-          <p>Our team is ready to discuss how we can tailor this service to your specific needs.</p>
-          <a href="/contact" class="btn btn-primary">Get in Touch</a>
         </div>
       </div>
     </section>
@@ -63,149 +65,125 @@ const { service } = Astro.props;
 </Layout>
 
 <style>
-  .page-content { padding-top: 2rem; }
-
-  .section {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 4rem 2rem 6rem;
-  }
+  .page-content { position: relative; z-index: 10; padding-top: 2rem; }
+  .container { max-width: 1200px; margin: 0 auto; }
+  .container-padding { padding: 0 2rem; }
 
   .content-grid {
     display: grid;
     grid-template-columns: 1fr 380px;
-    gap: 3rem;
+    gap: 4rem;
     align-items: start;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .section-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
   }
 
   .content-heading {
     font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 1.25rem;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
   }
 
   .body-text {
-    color: var(--color-text-dim);
-    font-size: 1.05rem;
-    line-height: 1.8;
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.85;
   }
 
+  /* Right column features panel */
   .features-panel {
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    padding: 1.75rem;
+    padding: 2.5rem;
     position: sticky;
     top: 6rem;
   }
 
   .features-heading {
     font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
-
-  .features-heading svg { color: var(--color-primary); }
 
   .features-list {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.875rem;
+    gap: 1.25rem;
   }
 
   .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 1.75rem;
   }
 
-  .feature-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    background: var(--color-primary);
+  .feature-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
     border-radius: 50%;
-    flex-shrink: 0;
+    box-shadow: 0 0 10px var(--primary);
   }
 
+  /* Localized CTA Banner */
   .inquiry-cta {
     position: relative;
-    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-    border: 1px solid var(--color-border);
-    border-radius: 1.5rem;
-    padding: 3.5rem 2.5rem;
+    padding: 5rem 2rem;
     text-align: center;
     overflow: hidden;
+    border-radius: 28px;
   }
-
+  .cta-content { position: relative; z-index: 2; }
+  .cta-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, white, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta-subtitle {
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .cta-glow {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 600px; height: 600px;
     background: radial-gradient(circle, rgba(59, 130, 246, 0.15), transparent 70%);
     border-radius: 50%;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
-    pointer-events: none;
+    pointer-events: none; z-index: 1;
   }
 
-  .cta-content { position: relative; z-index: 2; }
-
-  .cta-content h3 {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-  }
-
-  .cta-content p {
-    color: var(--color-text-dim);
-    font-size: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    font-family: var(--font-body);
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-
-  .btn-primary {
-    background: var(--color-primary);
-    color: white;
-    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.4);
-  }
-
-  .btn-primary:hover {
-    background: #2563EB;
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: 900px) {
-    .content-grid { grid-template-columns: 1fr; }
+  @media (max-width: 992px) {
+    .content-grid { grid-template-columns: 1fr; gap: 3rem; }
     .features-panel { position: static; }
   }
 </style>

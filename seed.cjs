@@ -77,7 +77,7 @@ const portfolios = [
       title: 'Forklift Competition',
       client: 'UMW Industries',
       description: 'Executed a high-octane forklift competition, delivering a seamless end-to-end event combining creativity, precision, and flawless execution. Encompassed full live technical production and safety compliance.',
-      image: 'https://images.unsplash.com/photo-1587293852726-70cdb56c2836?auto=format&fit=crop&q=80&w=800',
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDt4Xl_2gDHCYpsCmu8QtjusOlgDXufaKdjQ&s',
       details: 'On the technical side, we delivered top-tier audio-visual support, staging, and live production management. High energy live competition with flawless execution.'
     }
   },

@@ -4,92 +4,113 @@ interface Props {
   client: string;
   description: string;
   image?: string;
+  class?: string;
 }
 
 const {
   title,
   client,
   description,
-  image = 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800'
+  image = 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=800',
+  class: className
 } = Astro.props;
 ---
 
-<article class="project-card">
+<article class:list={["glass-card fade-in-up", className]}>
   <div class="project-image">
     <img src={image} alt={title} loading="lazy" />
+    <div class="image-overlay"></div>
   </div>
-  <div class="project-card-content">
-    <span class="project-client">{client}</span>
+  <div class="project-content">
+    <span class="insight-tag">{client}</span>
     <h3 class="project-title">{title}</h3>
     <p class="project-description">{description}</p>
+    <a href="#" class="read-more">
+      View Case Study
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
   </div>
 </article>
 
 <style>
-  .project-card {
-    position: relative;
-    background: var(--color-bg-card);
-    border: 1px solid var(--color-border);
-    border-radius: 1rem;
-    overflow: hidden;
-    transition: all 0.25s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .project-card:hover {
-    border-color: var(--color-primary);
-    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
-    transform: translateY(-4px);
-  }
-
   .project-image {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
-    background: var(--color-bg-darker);
+    position: relative;
+    border-radius: 16px;
+    margin-bottom: 2rem;
   }
 
   .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .project-card:hover .project-image img { transform: scale(1.07); }
-
-  .project-card-content {
-    padding: 1.5rem;
-    flex-grow: 1;
+  .glass-card:hover .project-image img {
+    transform: scale(1.1);
   }
 
-  .project-client {
+  .image-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(10, 10, 15, 0.45));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .glass-card:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .insight-tag {
     display: inline-block;
-    font-size: 0.75rem;
+    padding: 0.3rem 0.85rem;
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--primary-light);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 99px;
+    font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-primary);
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.5rem;
   }
 
   .project-title {
     font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-    transition: color 0.2s ease;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-main);
   }
 
-  .project-card:hover .project-title { color: var(--color-primary); }
-
   .project-description {
-    color: var(--color-text-dim);
-    font-size: 0.9rem;
-    line-height: 1.65;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all var(--trans-fast);
+    margin-top: auto;
+  }
+
+  .read-more:hover {
+    gap: 0.8rem;
+    color: var(--primary-light);
   }
 </style>
